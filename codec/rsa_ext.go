@@ -203,7 +203,7 @@ var pemStart = []byte("-----BEGIN ")
 //公钥可以没有如 -----BEGIN PUBLIC KEY-----的前缀后缀
 func getPubKey(in []byte) (*rsa.PublicKey, error) {
 	var pubKeyBytes []byte
-	if bytes.HasPrefix(in, pemStart) {
+	if bytes.Contains(in, pemStart) {
 		block, _ := pem.Decode(in)
 		if block == nil {
 			return nil, ErrPublicKey
