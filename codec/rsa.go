@@ -135,8 +135,8 @@ func NewRSASecurityByFile(pubFile, priFile string, ifCache bool) (rsa *rSASecuri
 
 func (this *rSASecurity) Init(pubStr, priStr string) (pubkeyErr, prikeyErr error) {
 	this.isFileInit = false
-	this.pubStr = pubStr
-	this.priStr = priStr
+	this.pubStr = strings.TrimSpace(pubStr)
+	this.priStr = strings.TrimSpace(priStr)
 	this.ifCache = true
 	this.pubkey, pubkeyErr = getPubKey([]byte(this.pubStr))
 	this.prikey, prikeyErr = getPriKey([]byte(this.priStr))
